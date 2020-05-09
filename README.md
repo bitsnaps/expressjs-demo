@@ -17,5 +17,12 @@ different packages version):
 ```
 npm shrinkwrap
 ```
-
+- We created the file: bin/www.js to run (or test the app) using:
+```
+node bin/www
+```
+- Install supertest for testing:
+```
+npm install supertest --save-dev
+```
 

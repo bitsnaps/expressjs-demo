@@ -106,3 +106,9 @@ If you want to restart heroku app:
 ```
 heroku restart
 ```
+
+Install ejs template engine:
+```
+npm install ejs --save
+npm shrinkwrap
+```

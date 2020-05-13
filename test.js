@@ -90,3 +90,29 @@ describe('Deleting cities', function () {
     .expect(204, done);
   });
 });
+
+describe('Shows city info', function () {
+  before(function () {
+    client.hset('cities', 'Bechar', 'south');
+  });
+  after(function () {
+    client.flushdb();
+  });
+  it('Returns 200 status code', function (done) {
+    request(app)
+    .get('/cities/Bechar')
+    .expect(200, done);
+  });
+  it('Returns HTML format', function (done) {
+    request(app)
+    .get('/cities/Bechar')
+    .expect('Content-Type', /html/, done);
+  });
+
+  it('Returns information about given city', function (done) {
+    request(app)
+    .get('/cities/Bechar')
+    .expect(/south/, done);
+  });
+
+});

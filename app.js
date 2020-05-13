@@ -66,6 +66,16 @@ app.delete('/cities/:name', function (req, res) {
   });
 });
 
+app.get('/cities/:name', function (req, res) {
+
+  client.hget('cities', req.params.name, function (error, description) {
+    res.render('show.ejs', {city: {name: req.params.name,
+    description: description}});
+  });
+});
+
+
+
 /*var PORT = 3000;
 app.listen(PORT, function(){
     console.log('Running on port:', PORT);

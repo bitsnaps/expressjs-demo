@@ -5,14 +5,15 @@
   "main": "app.js",
   "scripts": {
     "start": "node bin/www.js",
-    "test": "mocha test.js",
-    "auto-test": "mocha -w app.js test.js"
+    "test": "set NODE_ENV=test && mocha test.js",
+    "auto-test": "set NODE_ENV=test && mocha -w app.js test.js"
   },
   "author": "bitsnaps",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "redis": "^3.0.2"
   },
   "devDependencies": {
     "mocha": "^7.1.2",

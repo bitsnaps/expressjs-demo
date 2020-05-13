@@ -8,24 +8,52 @@ var urlencode = bodyParser.urlencoded({extended: false});
 app.use(express.static('public'));
 // app.use(urlencode); // we could use this for all routes
 
-cities = {
-  'Alger':'Central capital of Algeria',
-  'Oran':'Western big city',
-  'Annaba':'Eastern big city'
-};
+// Redis connection
+var redis = require('redis');
+if (process.env.REDISTOGO_URL){
+  var rtg = require('url').parse(process.env.REDISTOGO_URL);
+  var client = redis.createClient(rtg.port, rtg.hostname);
+  client.auth(rtg.auth.split(':')[1]);
+} else {
+  var client = redis.createClient();
+}
+
+// select the database number (here we use node env variable)
+// here we separate the running in dev mode from test mode (default: 0)
+client.select((process.env.NODE_ENV || 'development').length);
+// End Redis connection
+
+// Data Fixtures
+// client.hset('cities', 'Alger', 'description');
+// client.hset('cities', 'Oran', 'description');
+// client.hset('cities', 'Annaba', 'description');
+
+// cities = {
+//   'Alger':'Central capital of Algeria',
+//   'Oran':'Western big city',
+//   'Annaba':'Eastern big city'
+// };
 
 app.get('/', function(req, res) {
     res.send('OK');
 });
 
 app.get('/cities', function (req, res) {
-  res.json(Object.keys(cities));
+  // res.json(Object.keys(cities));
+  client.hkeys('cities', function (error, names) {
+    if (error) throw error;
+    res.json(names);
+  })
 });
 
 app.post('/cities', urlencode, function (req, res) {
   var newCity = req.body;
-  cities[newCity.name] = newCity.description;
-  res.status(201).json(newCity.name);
+  client.hset('cities', newCity.name, newCity.description, function (error) {
+    if (error) throw error;
+    // cities[newCity.name] = newCity.description;
+    res.status(201).json(newCity.name);
+  })
+
 });
 
 /*var PORT = 3000;

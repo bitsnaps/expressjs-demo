@@ -86,3 +86,13 @@ Install body-parser to parse json (we do shrinkwrap to save body-parser):
 npm install body-parser --save
 npm shrinkwrap
 ```
+
+Install redis (hiredis may not work on Windows):
+```
+npm install hiredis redis --save
+npm shrinkwrap
+```
+Add heroku configuration through variable environment:
+```
+heroku config:add NODE_ENV=production
+```

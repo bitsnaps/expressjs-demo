@@ -1,6 +1,12 @@
 var request = require('supertest');
 var app = require('./app');
 
+var redis = require('redis');
+var client = redis.createClient();
+// use a different db for testing
+client.select((process.env.NODE_ENV || 'test').length);
+client.flushdb();
+
 describe('Request to the root path', function () {
 
   it('Returns a 200 status code', function (done) {
@@ -39,12 +45,17 @@ describe('Listening cities on /cities', function () {
   it('Returns initial cities', function (done) {
     request(app)
     .get('/cities')
-    .expect(JSON.stringify(['Alger', 'Oran', 'Annaba']), done);
+    .expect(JSON.stringify([]), done);
   });
 
 });
 
 describe('Creating new cities', function () {
+
+  before(function () {
+
+  });
+
   it('Returns a 201 status code', function (done) {
     request(app)
     .post('/cities')

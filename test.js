@@ -71,3 +71,19 @@ describe('Creating new cities', function () {
   });
 
 });
+
+describe('Deleting cities', function () {
+
+  before(function () {
+    client.hset('cities', 'Blida', 'Center of the crise');
+  });
+  after(function () {
+    client.flushdb();
+  });
+
+  it('Returns a 204 status code', function (done) {
+    request(app)
+    .delete('/cities/Blida')
+    .expect(204, done);
+  });
+});

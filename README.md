@@ -101,3 +101,8 @@ In case you want to install redis on heroku (free tier require credit card):
 ```
 heroku addons:create redistogo:nano
 ```
+
+If you want to restart heroku app:
+```
+heroku restart
+```

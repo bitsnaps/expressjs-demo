@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node bin/www.js",
     "test": "mocha test.js",
-    "live-test": "mocha -w app.js test.js"
+    "auto-test": "mocha -w app.js test.js"
   },
   "author": "bitsnaps",
   "license": "ISC",

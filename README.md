@@ -38,13 +38,13 @@ now you're ready to run test with mocha using:
 ```
 npm test
 ```
-Add live testing script:
+Add automated testing script:
 ```
-"live-test": "mocha -w app.js test.js"
+"auto-test": "mocha -w app.js test.js"
 ```
-run live testing:
+run automated testing:
 ```
-npm run live-test
+npm run auto-test
 ```
 Add running command:
 ```

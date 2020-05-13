@@ -5,6 +5,9 @@ app.get('/', function(req, res) {
     res.send('OK');
 });
 
+app.get('/cities', function (req, res) {
+  res.json(['Alger', 'Oran', 'Annaba']);
+});
 
 /*var PORT = 3000;
 app.listen(PORT, function(){

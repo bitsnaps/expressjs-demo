@@ -4,7 +4,9 @@
   "description": "Building Blocks Express.js from CodeSchool course",
   "main": "app.js",
   "scripts": {
-    "test": "mocha test.js"
+    "start": "node bin/www.js",
+    "test": "mocha test.js",
+    "live-test": "mocha -w app.js test.js"
   },
   "author": "bitsnaps",
   "license": "ISC",

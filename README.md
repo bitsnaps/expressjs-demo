@@ -30,3 +30,27 @@ Install mocha testing description and better output:
 ```
 npm install mocha --save-dev
 ```
+then add a script command to package.json
+```
+"test": "mocha test.js"
+```
+now you're ready to run test with mocha using:
+```
+npm test
+```
+Add live testing script:
+```
+"live-test": "mocha -w app.js test.js"
+```
+run live testing:
+```
+npm run live-test
+```
+Add running command:
+```
+"start": "node bin/www.js",
+```
+now you can run the app:
+```
+npm run start
+```

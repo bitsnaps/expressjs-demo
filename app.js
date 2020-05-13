@@ -9,6 +9,6 @@ app.get('/', function(req, res) {
 /*var PORT = 3000;
 app.listen(PORT, function(){
     console.log('Running on port:', PORT);
-});Â*/
+});*/
 
 module.exports = app;

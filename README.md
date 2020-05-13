@@ -12,7 +12,7 @@ Install Express.js (latest version 4.*):
 npm install express@4 --save
 ```
 
-- Optional: fix packages versions (prevent npm install to download 
+- Optional: fix packages versions (prevent npm install to download
 different packages version):
 ```
 npm shrinkwrap
@@ -21,8 +21,12 @@ npm shrinkwrap
 ```
 node bin/www
 ```
-- Install supertest for testing:
+- Install supertest for testing (it's not runtime dependency so we add --save-dev and it wont be shrinkwrapped):
 ```
 npm install supertest --save-dev
 ```
 
+Install mocha testing description and better output:
+```
+npm install mocha --save-dev
+```

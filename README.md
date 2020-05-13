@@ -54,3 +54,26 @@ now you can run the app:
 ```
 npm run start
 ```
+
+Deploy to Heroku
+1- create an app:
+```
+heroku create
+```
+2- create then add and commit the `Procfile` with this content:
+```
+web: ./bin/www
+```
+3- Push the code to the created heorku remote master branch:
+```
+git push heroku master
+```
+4- Fix port number on heorku by add this line to ./bin/www.js:
+```
+var port = process.env.PORT || 3000;
+```
+
+x- Open the app from command line:
+```
+heroku open
+```

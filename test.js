@@ -52,10 +52,6 @@ describe('Listening cities on /cities', function () {
 
 describe('Creating new cities', function () {
 
-  before(function () {
-
-  });
-
   it('Returns a 201 status code', function (done) {
     request(app)
     .post('/cities')
@@ -68,6 +64,13 @@ describe('Creating new cities', function () {
     .post('/cities')
     .send('name=Blida&description="center+of+covid19"')
     .expect(/blida/i, done);
+  });
+
+  it('Validates city name description', function (done) {
+    request(app)
+    .post('/cities')
+    .send('name=&description=')
+    .expect(400, done);
   });
 
 });

@@ -72,8 +72,17 @@ git push heroku master
 ```
 var port = process.env.PORT || 3000;
 ```
-
-x- Open the app from command line:
+5- Open the app from command line:
 ```
 heroku open
+```
+
+P.S. if you get error when deploying to heroku make sure environment variables and settings are defined correctly:
+https://dev.to/lawrence_eagles/causes-of-heroku-h10-app-crashed-error-and-how-to-solve-them-3jnl
+
+
+Install body-parser to parse json (we do shrinkwrap to save body-parser):
+```
+npm install body-parser --save
+npm shrinkwrap
 ```

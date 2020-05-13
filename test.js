@@ -40,5 +40,23 @@ describe('Listening cities on /cities', function () {
     request(app)
     .get('/cities')
     .expect(JSON.stringify(['Alger', 'Oran', 'Annaba']), done);
-  })
+  });
+
+});
+
+describe('Creating new cities', function () {
+  it('Returns a 201 status code', function (done) {
+    request(app)
+    .post('/cities')
+    .send('name=Blida&description="center+of+covid19"')
+    .expect(201, done);
+  });
+
+  it('Returns the city name', function (done) {
+    request(app)
+    .post('/cities')
+    .send('name=Blida&description="center+of+covid19"')
+    .expect(/blida/i, done);
+  });
+
 });

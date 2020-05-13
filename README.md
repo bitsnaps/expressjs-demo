@@ -1,19 +1,19 @@
 # Building Blocks Express.js
 
-# Steps:
+## Steps:
 
 - Create the app:
 ```
 npm init
 ```
 
-Install Express.js (latest version 4.*):
+Install Express.js (latest version at this moment 4.*):
 ```
 npm install express@4 --save
 ```
 
-- Optional: fix packages versions (prevent npm install to download
-different packages version):
+- Optional: lock packages version (prevent npm install to download
+  different packages version):
 ```
 npm shrinkwrap
 ```

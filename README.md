@@ -96,3 +96,8 @@ Add heroku configuration through variable environment:
 ```
 heroku config:add NODE_ENV=production
 ```
+
+In case you want to install redis on heroku (free tier require credit card):
+```
+heroku addons:create redistogo:nano
+```

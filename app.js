@@ -16,11 +16,11 @@ if (process.env.REDISTOGO_URL){
   client.auth(rtg.auth.split(':')[1]);
 } else {
   var client = redis.createClient();
+  // select the database number (here we use node env variable)
+  // here we separate the running in dev mode from test mode (default: 0)
+  client.select((process.env.NODE_ENV || 'development').length);
 }
 
-// select the database number (here we use node env variable)
-// here we separate the running in dev mode from test mode (default: 0)
-client.select((process.env.NODE_ENV || 'development').length);
 // End Redis connection
 
 // Data Fixtures
